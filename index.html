@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E Vijaykarthik - Full Stack Developer</title>
+    <meta name="description" content="Portfolio of E Vijaykarthik - Computer Science Engineering student passionate about full-stack development">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0B1426 0%, #1E293B 50%, #0F172A 100%);
+            color: #E2E8F0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Custom Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px); 
+            }
+            50% { 
+                transform: translateY(-20px); 
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+            }
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { 
+                background-position: 0% 50%; 
+            }
+            50% { 
+                background-position: 100% 50%; 
+            }
+        }
+
+        @keyframes spin {
+            from { 
+                transform: rotate(0deg); 
+            }
+            to { 
+                transform: rotate(360deg); 
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { 
+                transform: translateX(-50%) translateY(0); 
+            }
+            40% { 
+                transform: translateX(-50%) translateY(-10px); 
+            }
+            60% { 
+                transform: translateX(-50%) translateY(-5px); 
+            }
+        }
+
+        /* Animation Classes */
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-fadeInLeft {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-fadeInRight {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-glow {
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 20, 38, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo p {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo p:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #CBD5E1;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            color: #3B82F6;
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: #3B82F6;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6, #06B6D4, #8B5CF6);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 4s ease-in-out infinite;
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            color: #06B6D4;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.7s forwards;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #94A3B8;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.9s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.1s forwards;
+        }
+
+        .btn {
+            padding: 0.8rem 2.2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+            color: white;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3B82F6;
+            border: 2px solid #3B82F6;
+        }
+
+        .btn-secondary:hover {
+            background: #3B82F6;
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .hero-socials {
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.3s forwards;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            color: #3B82F6;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #3B82F6, #06B6D4);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover::before {
+            transform: scale(1);
+        }
+
+        .social-link:hover {
+            color: white;
+            transform: translateY(-5px) scale(1.1) rotate(360deg);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5);
+        }
+
+        .social-link i {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Laptop Design - Replacing the old hero-image section */
+        .hero-laptop {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            opacity: 0;
+            animation: fadeInRight 1s ease-out 0.8s forwards;
+        }
+
+        .laptop-wrapper {
+            position: relative;
+        }
+
+        .laptop {
+            width: 500px;
+            height: 330px;
+            position: relative;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border-radius: 16px 16px 4px 4px;
+            box-shadow: 
+                0 0 0 6px #0f172a,
+                0 15px 45px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .laptop-screen {
+            width: 92%;
+            height: 85%;
+            position: absolute;
+            top: 4%;
+            left: 4%;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #1e293b;
+        }
+
+        .laptop-content {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-editor {
+            padding: 1.5rem;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+
+        .editor-header {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        .editor-dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ef4444; }
+        .dot.yellow { background: #f59e0b; }
+        .dot.green { background: #10b981; }
+
+        .editor-title {
+            margin-left: 0.8rem;
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+
+        .code-line {
+            margin-bottom: 0.6rem;
+        }
+
+        .keyword { color: #8b5cf6; }
+        .string { color: #10b981; }
+        .function { color: #06b6d4; }
+        .comment { color: #64748b; }
+        .variable { color: #f59e0b; }
+
+        .laptop-base {
+            width: 540px;
+            height: 16px;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border-radius: 0 0 16px 16px;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Floating Icons around laptop */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2.5rem;
+            color: rgba(99, 102, 241, 0.15);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 10%;
+            right: 15%;
+            animation-delay: -2s;
+        }
+
+        .floating-icon:nth-child(2) {
+            bottom: 20%;
+            right: 8%;
+            animation-delay: -4s;
+        }
+
+        .floating-icon:nth-child(3) {
+            top: 50%;
+            right: 25%;
+            animation-delay: -1s;
+        }
+
+        /* Animated Cursor */
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: #06b6d4;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        .scroll-arrow {
+            width: 35px;
+            height: 35px;
+            border: 3px solid #3B82F6;
+            border-top: none;
+            border-left: none;
+            transform: rotate(45deg);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            color: #CBD5E1;
+            line-height: 1.7;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat:hover {
+            transform: translateY(-8px) scale(1.05);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+
+        .stat h3 {
+            font-size: 2.2rem;
+            color: #3B82F6;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-card {
+            width: 300px;
+            height: 300px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 3px solid rgba(59, 130, 246, 0.3);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #3B82F6;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card img{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .about-card:hover::before {
+            transform: rotate(180deg);
+        }
+
+        .about-card:hover {
+            transform: scale(1.1) rotate(8deg);
+            border-color: rgba(59, 130, 246, 0.8);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: rgba(30, 41, 59, 0.4);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skill-category {
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1.2rem;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .skill-category:hover::before {
+            left: 100%;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .skill-category h3 {
+            font-size: 1.6rem;
+            color: #3B82F6;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .skill-items {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 0.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #3B82F6, #06B6D4);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .skill-item:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateX(8px) scale(1.02);
+        }
+
+        .skill-item i {
+            font-size: 1.6rem;
+            color: #3B82F6;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover i {
+            transform: rotate(360deg) scale(1.2);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+    background: rgba(59, 130, 246, 0.05);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 1.2rem;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    position: relative;
+}
+
+/* Gradient overlay */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* Hover effect - translate on Y-axis */
+.project-card:hover {
+    transform: translateY(-20px) scale(1.05); /* moves further up with slight zoom */
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 25px 60px rgba(59, 130, 246, 0.35);
+}
+
+
+        .project-image {
+            height: 220px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            color: #3B82F6;
+            position: relative;
+            overflow: hidden;
+        }
+        .fa-cloud-sun{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        .project-image .fa-utensils{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .project-card:hover .project-image::before {
+            left: 100%;
+            transform: translateY(-200px);
+        }
+
+        .project-content {
+            padding: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-content h3 {
+            font-size: 1.6rem;
+            color: #3B82F6;
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            color: #CBD5E1;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-tech span {
+            padding: 0.4rem 1rem;
+            background: rgba(59, 130, 246, 0.2);
+            color: #3B82F6;
+            border-radius: 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-tech span:hover {
+            background: #3B82F6;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            color: #3B82F6;
+            text-decoration: none;
+            border-radius: 0.8rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            background: #3B82F6;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Experience Section */
+        .experience {
+            background: rgba(30, 41, 59, 0.4);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #3B82F6, #06B6D4);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 5rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            background: #3B82F6;
+            border: 5px solid #0B1426;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1.2rem;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover::before {
+            transform: scaleX(1);
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .timeline-content h3 {
+            color: #3B82F6;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-content h4 {
+            color: #CBD5E1;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-date {
+            color: #06B6D4;
+            font-weight: 600;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-content ul {
+            margin-top: 1rem;
+            padding-left: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-content li {
+            color: #94A3B8;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Achievements Section */
+        .achievements {
+            background: rgba(30, 41, 59, 0.2);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transform: rotate(0deg);
+            transition: transform 0.6s ease;
+        }
+
+        .achievement-card:hover::before {
+            transform: rotate(180deg);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            color: #06B6D4;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .achievement-card h3 {
+            color: #3B82F6;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .achievement-card p {
+            color: #CBD5E1;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2.2rem;
+            color: #3B82F6;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: #CBD5E1;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-item:hover {
+            transform: translateX(8px) scale(1.02);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .contact-item i {
+            font-size: 1.8rem;
+            color: #3B82F6;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover i {
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        .contact-item h4 {
+            color: #3B82F6;
+            margin-bottom: 0.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item a {
+            color: #CBD5E1;
+            text-decoration: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item a:hover {
+            color: #3B82F6;
+        }
+
+        .contact-form {
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 0.8rem;
+            color: #E2E8F0;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            transform: scale(1.02);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #94A3B8;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(11, 20, 38, 0.9);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-left h3 {
+            color: #3B82F6;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-left p {
+            color: #94A3B8;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            color: #94A3B8;
+        }
+
+        /* Scroll Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(11, 20, 38, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                backdrop-filter: blur(15px);
+                border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu a {
+                padding: 1rem;
+                display: block;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .nav-toggle.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .laptop {
+                width: 400px;
+                height: 260px;
+            }
+
+            .code-editor {
+                padding: 1rem;
+                font-size: 0.7rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                justify-content: flex-start !important;
+                padding-left: 70px;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .laptop {
+                width: 320px;
+                height: 210px;
+            }
+
+            .code-editor {
+                padding: 0.8rem;
+                font-size: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <p><a href="#home" style="color: inherit; text-decoration: none;"> < VK /> </a></p>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#experience" class="nav-link">Education</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="gradient-text">Vijaykarthik</span>
+                </h1>
+                <p class="hero-subtitle">Full Stack Developer</p>
+                <p class="hero-description">
+                    Computer Science and Engineering student passionate about building creative and user-friendly web applications. 
+                    Eager to learn, grow, and contribute innovative projects with expertise in modern web technologies.
+                </p>
+                <div class="hero-buttons">
+                    <a href="assests/VijayKarthik New Resume.pdf" class="btn btn-primary" download>Downlaod Resume </a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://github.com/Vijaykarthik06" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/vijay-karthik-eswaran" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://leetcode.com/u/Vijaykarthik-25/" class="social-link">
+                        <i class="fa-solid fa-code"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="hero-laptop">
+                <div class="floating-elements">
+                    <div class="floating-icon"><i class="fab fa-js-square"></i></div>
+                    <div class="floating-icon"><i class="fab fa-react"></i></div>
+                    <div class="floating-icon"><i class="fas fa-code"></i></div>
+                </div>
+                
+                <div class="laptop-wrapper">
+                    <div class="laptop">
+                        <div class="laptop-screen">
+                            <div class="laptop-content">
+                                <div class="code-editor">
+                                    <div class="editor-header">
+                                        <div class="editor-dots">
+                                            <div class="dot red"></div>
+                                            <div class="dot yellow"></div>
+                                            <div class="dot green"></div>
+                                        </div>
+                                        <div class="editor-title">portfolio.js</div>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="keyword">const</span> <span class="variable">developer</span> = {
+                                    </div>
+                                    <div class="code-line">
+                                        &nbsp;&nbsp;<span class="variable">name</span>: <span class="string">"E Vijaykarthik"</span>,
+                                    </div>
+                                    <div class="code-line">
+                                        &nbsp;&nbsp;<span class="variable">role</span>: <span class="string">"Full Stack Developer"</span>,
+                                    </div>
+                                    <div class="code-line">
+                                        &nbsp;&nbsp;<span class="variable">skills</span>: [<span class="string">"React"</span>, <span class="string">"Node.js"</span>, <span class="string">"MongoDB"</span>],
+                                    </div>
+                                    <div class="code-line">
+                                        &nbsp;&nbsp;<span class="function">build</span>: () => <span class="string">"amazing projects"</span>
+                                    </div>
+                                    <div class="code-line">
+                                        };<span class="cursor"></span>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="comment">// Ready to create something awesome!</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="laptop-base"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView()">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title reveal">About Me</h2>
+            <div class="about-content">
+                <div class="about-text reveal-left">
+                    <p>
+                        I'm E Vijaykarthik, a Computer Science and Engineering student at SNS College of Engineering with a CGPA of 7.93 (Till Fifth Sem). 
+                        My journey in technology began with a curiosity about how digital solutions can solve real-world problems, 
+                        which evolved into a passion for creating innovative web applications.
+                    </p>
+                    <p>
+                        I specialize in full-stack development with expertise in modern technologies like ReactJS, JavaScript, 
+                        Node.js, ExpressJS, and MongoDB. I've completed an internship at Inpro Software Solutions where I 
+                        strengthened my skills in front-end development, API handling, and learned valuable industry practices.
+                    </p>
+                    <p>
+                        My area of interest lies in Full-Stack Development, and I'm passionate about creating seamless user experiences 
+                        while building robust backend architectures. I enjoy learning new technologies and applying them to solve 
+                        complex challenges.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat reveal">
+                            <h3>5+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat reveal">
+                            <h3>1+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat reveal">
+                            <h3>8+</h3>
+                            <p>Technologies</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image reveal-right">
+                    <div class="about-card">
+                        <img src="assests/WhatsApp Image 2025-08-22 at 15.50.38_341d20a8.jpg" class="fas fa-code" alt="error Loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title reveal">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category reveal">
+                    <h3>Frontend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js-square"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-react"></i>
+                            <span>ReactJS</span>
+                        </div>
+                        <!-- <div class="skill-item">
+                            <i class="fas fa-wind"></i>
+                            <span>Tailwind CSS</span>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3>Backend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-server"></i>
+                            <span>ExpressJS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>MongoDB</span>
+                        </div>
+                        <!-- <div class="skill-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>REST APIs</span>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3>Programming</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-java"></i>
+                            <span>Java</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3>Tools & Others</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>VS Code</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-palette"></i>
+                            <span>Canva</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-file-excel"></i>
+                            <span>Excel</span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title reveal">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card reveal">
+                    <div class="project-image">
+    <img src="https://cdn.pixabay.com/photo/2018/08/23/07/35/new-year-background-3625405_1280.jpg" 
+         alt="Weather Forecast" 
+class="fas fa-cloud-sun">
+</div>
+
+                    <div class="project-content">
+                        <h3>Weather Reporting Website</h3>
+                        <p>Developed a responsive weather reporting website using HTML, CSS, and JavaScript, providing real-time weather updates based on user location with interactive features like location-based search and forecast visualization.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Weather API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://weather-app-six-steel-77.vercel.app/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="https://github.com/Vijaykarthik06" class="project-link">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="project-image">
+                        <img src="https://ebz-static.s3.ap-south-1.amazonaws.com/easebuzz-static/upi-credit-cards-v1.png" 
+         alt="Weather Forecast Illustration" 
+         class="fas fa-utensils">
+                    </div>
+                    <div class="project-content">
+                        <h3>E-Commerce Website</h3>
+                        <p>Developed a fully responsive e-commerce website using HTML, CSS, and JavaScript to provide an
+intuitive and user-friendly shopping experience.
+Integrated MongoDB as the backend database for efficient product catalog management, secure user
+authentication, and order storage.</p>
+                        <div class="project-tech">
+                            <span>ReactJS</span>
+                            <span>ExpressJS</span>
+                            <span>MongoDB</span>
+                            <span>JavaScript</span>
+                            <span>HTML/CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="https://github.com/Vijaykarthik06" class="project-link">
+                                <i class="fab fa-github"></i>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title reveal">Experience & Education</h2>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Computer Science & Engineering</h3>
+                        <h4>SNS College of Engineering</h4>
+                        <span class="timeline-date">2022 - 2026*</span>
+                        <p><strong>CGPA: 7.97 (Till Sixth Sem)</strong></p>
+                        <ul>
+                            <li>Organized Java BootCamp at SNS College of Engineering</li>
+                            <li>Selected for Intra-College Level Smart India Hackathon</li>
+                            <li>Completed NPTEL certification in Programming in Java</li>
+                            <li>Presented Technical Paper at Ramakrishna College of Engineering</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Web Development Intern</h3>
+                        <h4>Inpro Software Solutions</h4>
+                        <span class="timeline-date">March 2024 - April 2024</span>
+                        <ul>
+                            <li>Strengthened skills in front-end technologies like HTML, CSS, JavaScript</li>
+                            <li>Learned API handling techniques and integration</li>
+                            <li>Developed a responsive weather application and portfolio website</li>
+                            <li>Gained knowledge in front-end development, responsive design, debugging, and performance optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Secondary School Leaving Certificate (SSLC)</h3>
+                        <h4>Jothi Vidhyalaya Matric Hr Sec School</h4>
+                        <span class="timeline-date">2020</span>
+                        <p><strong>Percentage: 93%</strong></p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Higher Secondary Certificate (HSC)</h3>
+                        <h4>Jothi Vidhyalaya Matric Hr Sec School</h4>
+                        <span class="timeline-date">2022</span>
+                        <p><strong>Percentage: 87%</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title reveal">Achievements & Certifications</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Java BootCamp Organizer</h3>
+                    <p>Organized Java BootCamp at SNS College of Engineering - 2025</p>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Smart India Hackathon</h3>
+                    <p>Selected for Intra-College Level Smart India Hackathon - 2024</p>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>NPTEL Certification</h3>
+                    <p>Completed Certification in Programming in Java - NPTEL</p>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">
+                        <i class="fa-solid fa-file-powerpoint"></i>
+                    </div>
+                    <h3>Technical Paper Presentation</h3>
+                    <p>Presented Technical Paper at Ramakrishna College of Engineering - 2023</p>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>Excel Certification</h3>
+                    <p>Completed Basic of Excel certification from Great Learning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title reveal">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info reveal-left">
+                    <h3>Let's work together!</h3>
+                    <p>I'm always open to discussing new opportunities, interesting projects, and innovative ideas. Feel free to reach out!</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:vijaykarthik2512@gmail.com">vijaykarthik2512@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <a href="tel:+917667360699">+91 7667360699</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <span>Salem, Tamil Nadu - 637502</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/vijay-karthik-eswaran" target="_blank">vijay-karthik-eswaran</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form action="https://api.web3forms.com/submit" class="contact-form" method="POST" id="form">
+                <!-- Replace with your Access Key -->
+                <input type="hidden" name="access_key" value="3e198d21-2909-4789-b274-16b2806a04e6">
+                <!-- Add these additional parameters -->
+                <input type="hidden" name="redirect" value="https://yourwebsite.com/thank-you.html">
+                <input type="hidden" name="subject" value="New Message from Portfolio Contact Form">
+                <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                <input type="hidden" name="replyto" value="vijaykarthik2512@gmail.com">
+                
+                <!-- Add this to send a copy to yourself -->
+                <input type="hidden" name="cc_emails" value="vijaykarthik2512@gmail.com">
+
+                <!-- Rest of your form fields remain the same -->
+                <div class="form-group">
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                </div>
+
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project or inquiry..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>E Vijaykarthik</h3>
+                    <p>Full Stack Developer passionate about creating innovative web solutions and building the future of technology.</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-socials">
+                        <a href="https://github.com/Vijaykarthik06" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/vijay-karthik-eswaran" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:vijaykarthik2512@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 E Vijaykarthik. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Navbar background change on scroll with enhanced effects
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const scrolled = window.scrollY;
+            
+            if (scrolled > 100) {
+                navbar.style.background = 'rgba(11, 20, 38, 0.98)';
+                navbar.style.borderBottom = '1px solid rgba(59, 130, 246, 0.4)';
+                navbar.style.boxShadow = '0 4px 30px rgba(59, 130, 246, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(11, 20, 38, 0.95)';
+                navbar.style.borderBottom = '1px solid rgba(59, 130, 246, 0.1)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Add active class to current navigation item
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            const scrollPos = window.scrollY + 150;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Enhanced Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('reveal')) {
+                        entry.target.classList.add('active');
+                    }
+                    if (entry.target.classList.contains('reveal-left')) {
+                        entry.target.classList.add('active');
+                    }
+                    if (entry.target.classList.contains('reveal-right')) {
+                        entry.target.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all reveal elements
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Typing effect for hero subtitle with enhanced animation
+        const subtitle = document.querySelector('.hero-subtitle');
+        const text = subtitle.textContent;
+        subtitle.textContent = '';
+        subtitle.style.borderRight = '2px solid #06B6D4';
+
+        let i = 0;
+        const typeWriter = () => {
+            if (i < text.length) {
+                subtitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                // Remove cursor after typing is complete
+                setTimeout(() => {
+                    subtitle.style.borderRight = 'none';
+                }, 1000);
+            }
+        };
+
+        // Start typing effect after page loads
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 1500);
+        });
+
+        // Contact form handling
+        const form = document.getElementById('form');
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+            
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            showNotification("Please wait...", "info");
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                const json = await response.json();
+                if (response.status === 200) {
+                    showNotification(json.message || "Message sent successfully! I'll get back to you soon.", "success");
+                    form.reset();
+                } else {
+                    console.error(json);
+                    showNotification(json.message || "Something went wrong. Please try again or email me directly at vijaykarthik2512@gmail.com", "error");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification("Network error. Please check your connection and try again or email me directly at vijaykarthik2512@gmail.com", "error");
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Send Message";
+            });
+        });
+
+        // Notification system
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                border-radius: 0.5rem;
+                color: white;
+                font-weight: 500;
+                z-index: 10000;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                max-width: 300px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            `;
+            
+            if (type === 'success') {
+                notification.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+            } else if (type === 'error') {
+                notification.style.background = 'linear-gradient(135deg, #EF4444, #DC2626)';
+            } else {
+                notification.style.background = 'linear-gradient(135deg, #3B82F6, #2563EB)';
+            }
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            const delay = type === 'success' ? 5000 : 4000;
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, delay);
+        }
+
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Portfolio loaded successfully! 🚀');
+            console.log('Designed and developed by E Vijaykarthik');
+        });
+    </script>
+</body>
+</html>
